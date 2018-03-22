@@ -39,8 +39,8 @@ Loads configuration in the following order:
 
 `environment vars` - Environment vars override everything, but key MUST be set in the files.
 
-##Attribution
+## Attribution for Past Work
 
-- Based on config3 concept which was used at lottery.com in the past
+- Inspired by config3 which was used at lottery.com in the past
 - Based on some code from configery, a deprecated lottery.com library
 
