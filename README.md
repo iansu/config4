@@ -5,11 +5,11 @@ This is a configuration library based on config3 but adapted to the pattern most
 **Significant Changes**
 
 - Loads from 3 places:  config.default.js, config.local.js and environment
-- Automatically parses booleans in environment vars that look like booleans
-- Automatically parses numbers in environment vars that look like numbers
+- Automatically parses booleans in environment vars that look like booleans `VARNAME=true`
+- Automatically parses numbers in environment vars that look like numbers eg. `VARNAME=2`
 - Parses double underscore `__` in environment vars as nested objects
 
-##Nested Objects
+## Environment Vars Nested Objects
 
 Environment variables like this: 
 
@@ -29,7 +29,7 @@ become
 ```
 
 
-##Load Order
+## Load Order
 
 Loads configuration in the following order:
 
