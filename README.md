@@ -1,6 +1,37 @@
 # Config4
 
-Loads configuration files in the following order:
+This is a configuration library based on config3 but adapted to the pattern most commonly used on projects at Lottery.com. 
+
+**Significant Changes**
+
+- Loads from 3 places:  config.default.js, config.local.js and environment
+- Automatically parses booleans in environment vars that look like booleans
+- Automatically parses numbers in environment vars that look like numbers
+- Parses double underscore `__` in environment vars as nested objects
+
+##Nested Objects
+
+Environment variables like this: 
+
+ ```
+ MONKEY__SEE__DO=banana
+``` 
+
+become
+
+``` 
+ MONKEY: {
+   SEE: {
+     DO: "banana" 
+   }
+ }
+    
+```
+
+
+##Load Order
+
+Loads configuration in the following order:
 
 `config.default.js` -  Loaded first and sets up any universal defaults.
 
@@ -8,7 +39,8 @@ Loads configuration files in the following order:
 
 `environment vars` - Environment vars override everything, but key MUST be set in the files.
 
-# Attribution
+##Attribution
 
-Based on config3 concept
+- Based on config3 concept which was used at lottery.com in the past
+- Based on some code from configery, a deprecated lottery.com library
 
