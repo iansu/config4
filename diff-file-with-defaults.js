@@ -1,4 +1,4 @@
-console.log('Usage: DEFAULT_FILE=config.default.js CONFIG_FILE=production.js node ./diff-env-with-defaults.js');
+console.log('Usage: DEFAULT_FILE=config.default.js CONFIG_FILE=production.js node ./diff-file-with-defaults.js');
 const _ = require('lodash');
 const path = require('path');
 
@@ -10,7 +10,7 @@ const heroku = new Heroku({ token: process.env.HEROKU_API_TOKEN });
 
 const appRoot = process.env.CONFIG_ROOT === 'test' ?
   path.resolve(path.join(__dirname, 'samples')) :
-  path.resolve(path.join(__dirname, '../..'));
+  path.resolve(path.join(__dirname, '.'));
 
 // get defaults flattened
 async function loadDefaults() {

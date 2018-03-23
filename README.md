@@ -4,7 +4,7 @@ This is a configuration library based on config3 but adapted to the pattern most
 
 **Significant Changes**
 
-- Loads from 3 places:  config.default.js, config.local.js and environment
+- Loads from 4 places:  config.default.js, config.environent.js, config.local.js and environment
 - Automatically parses booleans in environment vars that look like booleans `VARNAME=true`
 - Automatically parses numbers in environment vars that look like numbers eg. `VARNAME=2`
 - Parses double underscore `__` in environment vars as nested objects
@@ -35,9 +35,11 @@ Loads configuration in the following order:
 
 `config.default.js` -  Loaded first and sets up any universal defaults.
 
+`config.{environment}.js` -  Loaded second and does environment specific configs.
+
 `config.local.js` - Override or add to anything that you set in default file.
 
-`environment vars` - Environment vars override everything, but key MUST be set in the files.
+`environment vars` - Environment vars override everything.
 
 ## Attribution for Past Work
 

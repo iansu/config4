@@ -53,6 +53,10 @@ function readEnvironment() {
 function init() {
   let config = {};
   config = mergeConfig('config.default', config);
+  if (process.env.NODE_ENV && process.env.NODE_ENV.length) {
+    const environmentFileNAme = `config.${process.env.NODE_ENV.toLowerCase()}`;
+    config = mergeConfig(environmentFileNAme, config);
+  }
   config = mergeConfig('config.local', config);
 
   const envVars = readEnvironment();

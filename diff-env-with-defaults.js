@@ -10,7 +10,7 @@ const heroku = new Heroku({ token: process.env.HEROKU_API_TOKEN });
 
 const appRoot = process.env.CONFIG_ROOT === 'test' ?
   path.resolve(path.join(__dirname, 'samples')) :
-  path.resolve(path.join(__dirname, '../..'));
+  path.resolve(path.join(__dirname, '.'));
 
 // get defaults flattened
 async function loadDefaults() {

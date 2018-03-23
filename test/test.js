@@ -10,6 +10,37 @@ test.serial('Loading configuration files', async (t) => {
   t.is(config.OVERRIDE_DEFAULT, 'local');
 });
 
+
+test.serial('Overriding files with env file', async (t) => {
+  try {
+    process.env.NODE_ENV = 'staging';
+    const { init } = require('../index');
+    const config = init();
+    t.truthy(config.DEFAULT_PATH);
+    t.truthy(config.OVERRIDE_ENV);
+    t.truthy(config.SOMETHING);
+    t.truthy(config.LOCAL_PATH);
+    t.is(config.OVERRIDE_ENV, 'staging');
+  } finally {
+    delete process.env.NODE_ENV;
+  }
+});
+
+test.serial('Overriding files with missing env file', async (t) => {
+  try {
+    process.env.NODE_ENV = 'nobueno';
+    const { init } = require('../index');
+    const config = init();
+    t.truthy(config.DEFAULT_PATH);
+    t.truthy(config.OVERRIDE_ENV);
+    t.truthy(config.SOMETHING);
+    t.truthy(config.LOCAL_PATH);
+    t.is(config.OVERRIDE_ENV, 'default');
+  } finally {
+    delete process.env.NODE_ENV;
+  }
+});
+
 test.serial('Overriding files with env var', async (t) => {
   try {
     process.env.OVERRIDE_DEFAULT = 'test';
