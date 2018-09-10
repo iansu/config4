@@ -1,3 +1,7 @@
 {
-  "extends": "eslint-config-lottery"
+  "extends": "eslint-config-lottery",
+  "rules": {
+    "security/detect-non-literal-fs-filename": 0,
+    "security/detect-non-literal-require": 0
+  }
 }
