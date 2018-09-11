@@ -3,13 +3,28 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "precommit": "npm run lint",
-    "test": "CONFIG_ROOT=test node ./node_modules/.bin/ava --verbose",
-    "lint": "./node_modules/.bin/eslint ."
+    "format:all": "prettier --write \"**/*.{js,json,graphql}\"",
+    "format:check": "prettier --debug-check \"**/*.{js,json,graphql}\"",
+    "lint": "./node_modules/.bin/eslint .",
+    "precommit": "lint-staged",
+    "test": "CONFIG_ROOT=test node ./node_modules/.bin/ava --verbose"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/autolotto/config4.git"
+  },
+  "lint-staged": {
+    "concurrent": false,
+    "linters": {
+      "*.js": [
+        "eslint --quiet",
+        "git add"
+      ],
+      "*.{js,json,graphql}": [
+        "prettier --write",
+        "git add"
+      ]
+    }
   },
   "dependencies": {
     "debug": "^2.6.3",
@@ -17,15 +32,13 @@
   },
   "devDependencies": {
     "ava": "^0.24.0",
-    "eslint": "^4.11.0",
-    "eslint-plugin-ava": "^4.2.2",
-    "eslint-plugin-no-loops": "^0.3.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-unicorn": "^3.0.0",
+    "eslint": "^5.5.0",
+    "eslint-config-lottery": "^1.1.1",
     "flat": "^4.0.0",
     "heroku-client": "^3.0.6",
-    "husky": "^0.14.3"
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.2",
+    "prettier": "1.13.5"
   },
   "ava": {
     "verbose": true,

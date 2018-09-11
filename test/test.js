@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/import-index,ava/no-async-fn-without-await */
 const test = require('ava');
 
-test.serial('Loading configuration files', async (t) => {
+test.serial('Loading configuration files', async t => {
   const config = require('../index');
   t.truthy(config.DEFAULT_PATH);
   t.truthy(config.OVERRIDE_DEFAULT);
@@ -10,8 +10,7 @@ test.serial('Loading configuration files', async (t) => {
   t.is(config.OVERRIDE_DEFAULT, 'local');
 });
 
-
-test.serial('Overriding files with env file', async (t) => {
+test.serial('Overriding files with env file', async t => {
   try {
     process.env.NODE_ENV = 'staging';
     const { init } = require('../index');
@@ -26,7 +25,7 @@ test.serial('Overriding files with env file', async (t) => {
   }
 });
 
-test.serial('Overriding files with missing env file', async (t) => {
+test.serial('Overriding files with missing env file', async t => {
   try {
     process.env.NODE_ENV = 'nobueno';
     const { init } = require('../index');
@@ -41,7 +40,7 @@ test.serial('Overriding files with missing env file', async (t) => {
   }
 });
 
-test.serial('Overriding files with env var', async (t) => {
+test.serial('Overriding files with env var', async t => {
   try {
     process.env.OVERRIDE_DEFAULT = 'test';
     const { init } = require('../index');
@@ -56,7 +55,7 @@ test.serial('Overriding files with env var', async (t) => {
   }
 });
 
-test.serial('loading boolean values from environment', async (t) => {
+test.serial('loading boolean values from environment', async t => {
   try {
     process.env.BOOL_T = true;
     process.env.BOOL_F = false;
@@ -71,7 +70,7 @@ test.serial('loading boolean values from environment', async (t) => {
   }
 });
 
-test.serial('loading number values from environment', async (t) => {
+test.serial('loading number values from environment', async t => {
   try {
     process.env.NUM_V = 42;
     const { init } = require('../index');
@@ -82,8 +81,7 @@ test.serial('loading number values from environment', async (t) => {
   }
 });
 
-
-test.serial('loading deep nested values from environment', async (t) => {
+test.serial('loading deep nested values from environment', async t => {
   try {
     process.env.MONKEY__SEE__DO = 'banana';
     const { init } = require('../index');
@@ -93,4 +91,3 @@ test.serial('loading deep nested values from environment', async (t) => {
     delete process.env.MONKEY__SEE__DO;
   }
 });
-

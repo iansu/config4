@@ -5,9 +5,10 @@ const path = require('path');
 
 const debug = require('debug')('config4');
 
-const appRoot = process.env.CONFIG_ROOT === 'test' ?
-  path.resolve(path.join(__dirname, 'samples')) :
-  path.resolve(path.join(__dirname, '../..'));
+const appRoot =
+  process.env.CONFIG_ROOT === 'test'
+    ? path.resolve(path.join(__dirname, 'samples'))
+    : path.resolve(path.join(__dirname, '../..'));
 
 function load(file) {
   const config = require(file);
@@ -60,12 +61,12 @@ function init() {
   config = mergeConfig('config.local', config);
 
   const envVars = readEnvironment();
-  _.forOwn(envVars, (v, k) => { 
+  _.forOwn(envVars, (v, k) => {
     if (!k.startsWith('_')) {
       _.set(config, k.replace(/__/g, '.'), v);
     }
   });
-  
+
   debug(`Loaded config: ${JSON.stringify(config, null, 2)}`);
   return config;
 }
