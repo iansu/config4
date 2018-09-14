@@ -6,7 +6,8 @@
     "format:all": "prettier --write \"**/*.{js,json,graphql}\"",
     "format:check": "prettier --debug-check \"**/*.{js,json,graphql}\"",
     "lint": "./node_modules/.bin/eslint .",
-    "precommit": "lint-staged && npm install --package-lock-only",
+    "precommit": "lint-staged",
+    "postcommit": "npm install --package-lock-only",
     "test": "CONFIG_ROOT=test node ./node_modules/.bin/ava --verbose"
   },
   "repository": {
@@ -31,7 +32,7 @@
     "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "ava": "^0.24.0",
+    "ava": "^0.25.0",
     "eslint": "^5.5.0",
     "eslint-config-lottery": "^1.1.1",
     "flat": "^4.0.0",
