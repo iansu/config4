@@ -6,7 +6,7 @@
     "format:all": "prettier --write \"**/*.{js,json,graphql}\"",
     "format:check": "prettier --debug-check \"**/*.{js,json,graphql}\"",
     "lint": "./node_modules/.bin/eslint .",
-    "precommit": "lint-staged",
+    "precommit": "lint-staged && npm install --package-lock-only",
     "test": "CONFIG_ROOT=test node ./node_modules/.bin/ava --verbose"
   },
   "repository": {
@@ -58,7 +58,8 @@
     "test": "test"
   },
   "engines": {
-    "node": ">=8.x"
+    "node": ">=8.11.3",
+    "npm": ">=6.0.0"
   },
   "author": "kris read",
   "license": "ISC"
