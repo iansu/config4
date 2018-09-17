@@ -7,7 +7,7 @@
     "format:check": "prettier --debug-check \"**/*.{js,json,graphql}\"",
     "lint": "./node_modules/.bin/eslint .",
     "precommit": "lint-staged",
-    "postcommit": "npm install --package-lock-only",
+    "prepush": "npm install --package-lock-only",
     "test": "CONFIG_ROOT=test node ./node_modules/.bin/ava --verbose"
   },
   "repository": {
